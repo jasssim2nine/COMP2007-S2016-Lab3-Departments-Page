@@ -18,9 +18,12 @@ namespace COMP2007_S2016_Lab3_Departments_Page
         {
             if (!IsPostBack)
             {
-                
+                //create a session variable and stored as default
+                Session["SortColumn"] = "DepartmentID";
+                Session["SortDirection"] = "ASC";
                 // Get the department data
                 this.GetDepartments();
+
             }
         }
 
@@ -29,14 +32,14 @@ namespace COMP2007_S2016_Lab3_Departments_Page
             // connect to EF
             using (DefaultConnection db = new DefaultConnection())
             {
-                
+                string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
                 // query the Students Table using EF and LINQ
                 var Departments = (from allDepartments in db.Departments
                                 select allDepartments);
 
                 // bind the result to the GridView
-                DepartmentsGridView.DataSource = Departments.ToList();
+                DepartmentsGridView.DataSource = Departments.AsQueryable().OrderBy(sortString).ToList();
                 DepartmentsGridView.DataBind();
             }
         }
@@ -91,6 +94,9 @@ namespace COMP2007_S2016_Lab3_Departments_Page
         /// <summary>
         /// This handler set the no. of records to be displayed
         /// </summary>
+        /// @Param (object)
+        /// @Param (EventArgs) e
+        /// @returns (void)
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void PageSizeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,5 +107,60 @@ namespace COMP2007_S2016_Lab3_Departments_Page
             this.GetDepartments();
 
         }
-    }
-}
+        /// <summary>
+        /// This handler handles sorting
+        /// </summary>
+        /// @Param (object)
+        /// @Param (GridViewSotEventArgs) e
+        /// @returns (void)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DepartmentsGridView_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            //get the column to sort by
+            Session["SortColumn"] = e.SortExpression;
+
+            //refresh the grid
+            this.GetDepartments();
+
+            //create a toggle for the direction
+            Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
+        }
+        /// <summary>
+        /// This method adds the caret to the headers of the table..
+        /// </summary>
+        /// @Param (object)
+        /// @Param (GridViewRowEventArgs) e
+        /// @Param (void)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DepartmentsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (IsPostBack)
+            {
+                if (e.Row.RowType == DataControlRowType.Header) // if header row has been clicked
+                {
+                    LinkButton linkbutton = new LinkButton();
+
+                    for (int index = 0; index < DepartmentsGridView.Columns.Count - 1; index++)
+                    {
+                        if (DepartmentsGridView.Columns[index].SortExpression == Session["SortColumn"].ToString())
+                        {
+                            if (Session["SortDirection"].ToString() == "ASC")
+                            {
+                                linkbutton.Text = " <i class='fa fa-caret-up fa-lg'></i>";
+                            }
+                            else
+                            {
+                                linkbutton.Text = " <i class='fa fa-caret-down fa-lg'></i>";
+                            }
+
+                            e.Row.Cells[index].Controls.Add(linkbutton);
+                        }
+                    }
+                }
+            }
+        }
+      }
+   }
+ 

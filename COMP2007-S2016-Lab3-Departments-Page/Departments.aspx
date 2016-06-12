@@ -20,11 +20,12 @@
                    <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="DepartmentsGridView" 
                        AutoGenerateColumns="false" DataKeyNames="DepartmentID" OnRowDeleting="DepartmentsGridView_RowDeleting"
                         AllowPaging="true" PageSize="3" OnPageIndexChanging="DepartmentsGridView_PageIndexChanging"
+                         AllowSorting="true" OnSorting="DepartmentsGridView_Sorting" OnRowDataBound="DepartmentsGridView_RowDataBound" 
                         >
                        <Columns>
-                           <asp:BoundField DataField="DepartmentID" HeaderText="Departments ID" Visible="true" />
-                           <asp:BoundField DataField="Name" HeaderText="Departments Name" Visible="true" />
-                           <asp:BoundField DataField="Budget" HeaderText="Budget" Visible="true" />
+                           <asp:BoundField DataField="DepartmentID" HeaderText="Departments ID" Visible="true" SortExpression="DepartmentID" />
+                           <asp:BoundField DataField="Name" HeaderText="Departments Name" Visible="true" SortExpression="Name"/>
+                           <asp:BoundField DataField="Budget" HeaderText="Budget" Visible="true" SortExpression="Budget" />
                            <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'/>Delete"
                               ShowDeleteButton="true" ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm" />
                        </Columns>
