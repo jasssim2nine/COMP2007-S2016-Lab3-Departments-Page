@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 // using statements that are required to connect to EF DB
 using COMP2007_S2016_Lab3_Departments_Page.Models;
 using System.Web.ModelBinding;
+using System.Linq.Dynamic;
 
 namespace COMP2007_S2016_Lab3_Departments_Page
 {
