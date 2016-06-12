@@ -16,9 +16,33 @@ namespace COMP2007_S2016_Lab3_Departments_Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if((!IsPostBack) && (Request.QueryString.Count > 0))
+            {
+                this.GetDepartments();   
+            }
         }
 
+        protected void GetDepartments()
+        {
+            //populate the form  with existing data
+            int DepartmentID = Convert.ToInt32(Request.QueryString["DepartmentID"]);
+            //connect to db
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                //populate department object instance with the DepartmentID from the url
+                Department updatedDepartment = (from deparment in db.Departments
+                                                where deparment.DepartmentID == DepartmentID
+                                                select deparment).FirstOrDefault();
+                // map the departments data...
+                if(updatedDepartment != null)
+                {
+                    NameTextBox.Text = updatedDepartment.Name;
+                    BudgetTextBox.Text = updatedDepartment.Budget.ToString();
+
+                }
+
+            }
+        }
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             
@@ -31,12 +55,34 @@ namespace COMP2007_S2016_Lab3_Departments_Page
             using (DefaultConnection db = new DefaultConnection())
             {
                 Department newDepartment = new Department();
+
+                int DepartmentID = 0;
+
+                if(Request.QueryString.Count > 0)
+                {
+                    //get the id from the url
+                    DepartmentID = Convert.ToInt32(Request.QueryString["DepartmentID"]);
+                    //get the current department from the EF
+                    newDepartment = (from department in db.Departments
+                                     where department.DepartmentID == DepartmentID
+                                     select department).FirstOrDefault();
+
+                }
+
+                //add form data to new department record...
                 newDepartment.Name = NameTextBox.Text;
-                newDepartment.Budget = Convert.ToInt32(BudgetTextBox.Text);
+                newDepartment.Budget = Convert.ToDecimal(BudgetTextBox.Text);
 
-                db.Departments.Add(newDepartment);
+                //
+                if(DepartmentID==0)
+                {
+                    db.Departments.Add(newDepartment);
+                }
+                
 
-                //save our changes
+
+
+                //save our changes & update & inserts.
                 db.SaveChanges();
 
                 //redirect back to the updated department page
