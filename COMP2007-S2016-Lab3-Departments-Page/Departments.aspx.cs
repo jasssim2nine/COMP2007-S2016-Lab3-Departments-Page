@@ -40,5 +40,37 @@ namespace COMP2007_S2016_Lab3_Departments_Page
                 DepartmentsGridView.DataBind();
             }
         }
+        /// <summary>
+        /// This handler deletes the department using EF 
+        /// @Param (object) sender
+        /// @Param (GridViewDeleteEventArgs) e
+        /// @returns (void)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DepartmentsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            //store the row which is clicked
+            int selectedRow = e.RowIndex;
+
+            //get the selected department id using department datakey 
+            int DepartmentID = Convert.ToInt32(DepartmentsGridView.DataKeys[selectedRow].Values["DepartmentID"]);
+            // using ef to find the selected department 
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                //create object of department class and store the query
+                Department deletedDepartment = (from departmentRecords in db.Departments
+                                               where departmentRecords.DepartmentID == DepartmentID
+                                               select departmentRecords).FirstOrDefault();
+
+                //remove the selected department from the db
+                db.Departments.Remove(deletedDepartment);
+                // save my changes back to the database
+                db.SaveChanges();
+
+                //refresh the grid
+                this.GetDepartments();
+            }
+        }
     }
 }
