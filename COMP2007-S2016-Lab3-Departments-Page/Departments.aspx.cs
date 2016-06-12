@@ -72,5 +72,34 @@ namespace COMP2007_S2016_Lab3_Departments_Page
                 this.GetDepartments();
             }
         }
+        /// <summary>
+        /// This handler takes care of paging
+        /// </summary>
+        /// @Param (object) sender
+        /// @Param (GridViewPageEventArgs) e
+        /// @returns (void)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DepartmentsGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //set the new page number
+            DepartmentsGridView.PageIndex = e.NewPageIndex;
+
+            //refresh the grid
+            this.GetDepartments();
+        }
+        /// <summary>
+        /// This handler set the no. of records to be displayed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void PageSizeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //set the page size
+            DepartmentsGridView.PageSize = Convert.ToInt32(PageSizeDropDownList.SelectedValue);
+            //refresh the grid
+            this.GetDepartments();
+
+        }
     }
 }
