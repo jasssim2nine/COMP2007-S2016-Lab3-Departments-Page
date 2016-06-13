@@ -10,6 +10,11 @@ using COMP2007_S2016_Lab3_Departments_Page.Models;
 using System.Web.ModelBinding;
 using System.Linq.Dynamic;
 
+/**
+ * Author : Jasim Khan
+ * student# : 200263011
+ * description : department details page to display a form to edit/save a new department record.
+ */
 namespace COMP2007_S2016_Lab3_Departments_Page
 {
     public partial class DepartmentDetails : System.Web.UI.Page
@@ -24,7 +29,7 @@ namespace COMP2007_S2016_Lab3_Departments_Page
         /// <summary>
         /// This method connects the database and populates the query. 
         /// </summary>
-        /// @Param (null)
+        /// @Param (object) 
         /// @Param (GetDepartments)
         /// @returns (void)
         

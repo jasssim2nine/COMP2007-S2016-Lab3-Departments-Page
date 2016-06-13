@@ -10,10 +10,24 @@ using COMP2007_S2016_Lab3_Departments_Page.Models;
 using System.Web.ModelBinding;
 using System.Linq.Dynamic;
 
+/*
+ * Author : Jasim Khan
+ * Student# : 200263011
+ * Description : Department page to display different departments with CRUD functionality.
+ */
 namespace COMP2007_S2016_Lab3_Departments_Page
 {
     public partial class Departments : System.Web.UI.Page
     {
+        /// <summary>
+        /// This method loads the page.
+        /// </summary>
+        /// @Param (object) sender
+        /// @Param (EventArgs) e
+        /// @returns (void)
+
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,7 +40,15 @@ namespace COMP2007_S2016_Lab3_Departments_Page
 
             }
         }
+        /// <summary>
+        /// This method connects to db and creates a query.
+         /// </summary>
+        /// @Param (object) 
+        /// @method (GetDepartments) 
+        /// @returns (void)
 
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void GetDepartments()
         {
             // connect to EF
@@ -94,7 +116,7 @@ namespace COMP2007_S2016_Lab3_Departments_Page
         /// <summary>
         /// This handler set the no. of records to be displayed
         /// </summary>
-        /// @Param (object)
+        /// @Param (object) sender
         /// @Param (EventArgs) e
         /// @returns (void)
         /// <param name="sender"></param>
@@ -110,7 +132,7 @@ namespace COMP2007_S2016_Lab3_Departments_Page
         /// <summary>
         /// This handler handles sorting
         /// </summary>
-        /// @Param (object)
+        /// @Param (object) sender
         /// @Param (GridViewSotEventArgs) e
         /// @returns (void)
         /// <param name="sender"></param>
@@ -129,7 +151,7 @@ namespace COMP2007_S2016_Lab3_Departments_Page
         /// <summary>
         /// This method adds the caret to the headers of the table..
         /// </summary>
-        /// @Param (object)
+        /// @Param (object) sender
         /// @Param (GridViewRowEventArgs) e
         /// @Param (void)
         /// <param name="sender"></param>
