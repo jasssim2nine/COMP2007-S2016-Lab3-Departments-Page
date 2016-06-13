@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="COMP2007_S2016_Lab3_Departments_Page.Contact" %>
-
+<%--
+    Author Name : Jasim Khan
+    student id : 200263011
+    date : 13-06-16
+    description : Contact Page to display contact info.
+      --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
@@ -13,7 +18,7 @@
                     <div class="panel-heading">Contact Info</div>
                     <div class="panel-body">
                         <address>
-                            <strong>Tom Tsiliopoulos</strong><br>
+                            <strong>Jasim Khan</strong><br>
                             1 Toronto Street<br>
                             Barrie, ON L9L 9L9<br>
                             <abbr title="Phone">TEL:</abbr>

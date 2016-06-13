@@ -1,5 +1,10 @@
 ﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentDetails.aspx.cs" Inherits="COMP2007_S2016_Lab3_Departments_Page.StudentDetails" %>
-
+<%--
+    Author Name : Jasim Khan
+    student id : 200263011
+    date : 13-06-16
+    description : Student details page to display a detailed form of the student for editing & adding.
+      --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">

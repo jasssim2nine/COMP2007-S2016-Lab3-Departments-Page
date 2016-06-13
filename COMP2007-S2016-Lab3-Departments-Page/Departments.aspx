@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="Departments" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Departments.aspx.cs" Inherits="COMP2007_S2016_Lab3_Departments_Page.Departments" %>
-
+<%--
+    Author Name : Jasim Khan
+    student id : 200263011
+    date : 13-06-16
+    description : Departments page to display different departments in the table.
+      --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    <div class="container">
        <div class="row">

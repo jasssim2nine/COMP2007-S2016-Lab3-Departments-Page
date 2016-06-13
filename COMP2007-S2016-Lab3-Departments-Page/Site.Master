@@ -1,5 +1,10 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COMP2007_S2016_Lab3_Departments_Page.Site" %>
-
+<%--
+    Author Name : Jasim Khan
+    student id : 200263011
+    date : 13-06-16
+    description :Site master page for the front end of the website.
+      --%>
 <%@ Register Src="~/User_Controls/Navbar.ascx" TagName="Navbar" TagPrefix="bs3" %>
 <!DOCTYPE html>
 <html lang="en">

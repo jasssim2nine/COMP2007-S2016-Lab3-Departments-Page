@@ -20,7 +20,12 @@ namespace COMP2007_S2016_Lab3_Departments_Page
                 this.GetStudent();
             }
         }
-
+        /// <summary>
+        /// This handler is to handle sorting.
+        /// </summary>
+        /// @Param (null)
+        /// @Param (GetStudent)
+        /// @returns (void)
         protected void GetStudent()
         {
             // populate teh form with existing data from the database

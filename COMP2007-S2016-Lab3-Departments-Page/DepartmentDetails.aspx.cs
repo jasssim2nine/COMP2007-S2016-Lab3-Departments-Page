@@ -21,6 +21,13 @@ namespace COMP2007_S2016_Lab3_Departments_Page
                 this.GetDepartments();   
             }
         }
+        /// <summary>
+        /// This method connects the database and populates the query. 
+        /// </summary>
+        /// @Param (null)
+        /// @Param (GetDepartments)
+        /// @returns (void)
+        
 
         protected void GetDepartments()
         {
@@ -43,12 +50,27 @@ namespace COMP2007_S2016_Lab3_Departments_Page
 
             }
         }
+        /// <summary>
+        /// This onclick event to cancel and redirect to original page.
+        /// </summary>
+        /// @Param (object)
+        /// @Param (EventArgs) e
+        /// @Param returns (void)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             
             Response.Redirect("~/Departments.aspx");
         }
-
+        /// <summary>
+        /// This onclick event to save-update & insert the query. refresh the list and redirects to original page.
+        /// </summary>
+        /// @Param (object)
+        /// @Param (EventArgs) e
+        /// @Param returns (void)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             //use EF connect to database server
@@ -78,9 +100,6 @@ namespace COMP2007_S2016_Lab3_Departments_Page
                 {
                     db.Departments.Add(newDepartment);
                 }
-                
-
-
 
                 //save our changes & update & inserts.
                 db.SaveChanges();

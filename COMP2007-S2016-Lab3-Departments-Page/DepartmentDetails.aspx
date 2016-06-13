@@ -1,4 +1,10 @@
-﻿    <%@ Page Title="Department" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DepartmentDetails.aspx.cs" Inherits="COMP2007_S2016_Lab3_Departments_Page.DepartmentDetails" %>
+﻿<%@ Page Title="Department" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DepartmentDetails.aspx.cs" Inherits="COMP2007_S2016_Lab3_Departments_Page.DepartmentDetails" %>
+<%--
+    Author Name : Jasim Khan
+    student id : 200263011
+    date : 13-06-16
+    description : DepartmentDetails page to add & edit the different departments..
+      --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
@@ -13,6 +19,8 @@
                 <div class="form-group">
                     <label class="control-label" for="BudgetTextBox">Budget</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="BudgetTextBox" placeholder="Budget" required="true"></asp:TextBox>
+                     <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Value! Min - $100, Max - $100000" ControlToValidate="BudgetTextBox" MinimumValue="100" MaximumValue="100000" 
+                         Type="Integer" Display="Dynamic" ForeColor="Green" Font-Size="Large"></asp:RangeValidator>
                 </div>
               <asp:Button Text="Cancel" ID="CancelButton" CssClass="btn btn-warning btn-lg" runat="server" 
                         UseSubmitBehavior="false" CausesValidation="false" OnClick="CancelButton_Click" />

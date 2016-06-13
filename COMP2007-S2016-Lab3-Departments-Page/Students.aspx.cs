@@ -106,7 +106,14 @@ namespace COMP2007_S2016_Lab3_Departments_Page
             // refresh the grid
             this.GetStudents();
         }
-
+        /// <summary>
+        /// This handler is to handle paging.
+        /// </summary>
+        /// @Param (object)
+        /// @Param (EventArgs) e
+        /// @returns (void)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void PageSizeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Set the new Page size
@@ -115,7 +122,12 @@ namespace COMP2007_S2016_Lab3_Departments_Page
             // refresh the grid
             this.GetStudents();
         }
-
+        /// <summary>
+        /// This handler is to handle sorting.
+        /// </summary>
+        /// @Param (object)
+        /// @Param (GridViewSortEventArgs) e
+        /// @returns (void)
         protected void StudentsGridView_Sorting(object sender, GridViewSortEventArgs e)
         {
             // get the column to sorty by
@@ -128,6 +140,12 @@ namespace COMP2007_S2016_Lab3_Departments_Page
             Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
 
+        /// <summary>
+        /// This method adds carets.
+        /// </summary>
+        /// @Param (object)
+        /// @Param (GridViewRowEventArgs) e
+        /// @returns (void)
         protected void StudentsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (IsPostBack)
