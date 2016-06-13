@@ -19,8 +19,6 @@
                 <div class="form-group">
                     <label class="control-label" for="BudgetTextBox">Budget</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="BudgetTextBox" placeholder="Budget" required="true"></asp:TextBox>
-                     <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Value! Min - $100, Max - $100000" ControlToValidate="BudgetTextBox" MinimumValue="100" MaximumValue="100000" 
-                         Type="Integer" Display="Dynamic" ForeColor="Green" Font-Size="Large"></asp:RangeValidator>
                 </div>
               <asp:Button Text="Cancel" ID="CancelButton" CssClass="btn btn-warning btn-lg" runat="server" 
                         UseSubmitBehavior="false" CausesValidation="false" OnClick="CancelButton_Click" />
